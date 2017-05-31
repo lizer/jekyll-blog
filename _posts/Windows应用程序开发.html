@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Windows应用程序开发</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>第三篇 Windows应用程序开发</h1>
+<h2>第13章 创建Windows应用程序</h2>
+<h3>13.1 认识Windows应用程序</h3>
+<h4>13.1.1 窗口</h4>
+<ul>
+<li>Windows应用程序的一个最大特点就是它的图形化用户界面。</li>
+<li>
+Windows程序生成3个窗口：
+<ul>
+<li>最外层的大窗口包含菜单栏和工具栏，因此该窗口称为主窗口或父窗口</li>
+<li>在主窗口内部的小窗口是父窗口的子窗口。一个父窗口可以有多个子窗口</li>
+</ul>
+</li>
+<li>
+一个典型窗口的基本组成包括：
+<ul>
+<li>边框，标题栏和客户区</li>
+</ul>
+</li>
+</ul>
+<h4>13.1.2 Windows程序的工作过程</h4>
+<ul>
+<li>WindoWs程序都是在Windows操作系统的控制下运行的</li>
+<li>Windows操作系统是多任务的</li>
+<li>Windows操作系统通过放在目标程序的消息队列中的消息与应用程序进行通信</li>
+<li>筛选应用程序关心的消息，以应用程序的要求处理这些消息，并将其余消息回传给Windows</li>
+</ul>
+<h4>13.1.3 Windows API</h4>
+<ul>
+<li>Windows引用程序与操作系统之间的所有通信，都要使用Windows应用程序编程接口（Windows API）。API的出现早于C++，其中中并没类的概念，主要用结构来表示数据</li>
+<li>API函数多，覆盖广，较难记忆。于是微软随后以面向对象的方式重新组织了这些API函数，升级为（Microsoft Foundation Classes即MFC）。另外，VC++2008中，还针对CLR提供了Windows Form程序，其创建窗口的代码完全是自动生成的</li>
+</ul>
+<h3>13.2 Windows程序结构</h3>
+<h4>13.2.1 Windows数据类型</h4>
+<ul>
+<li>Windows提供一些数据类型。Windows API函数的返回类型和形参都会使用这些类型，并且在MFC中会继续使用到。这些数据类型都映射为某种C++数据类型。</li>
+<li>Windows数据类型都包含在windows.h头文件中，因此在Windows程序中应该包含该头文件。</li>
+<li>句柄是Windows中一个非常重要的概念</li>
+<li>
+在Windows程序中，变量名拥有的前缀都能指出变量容纳的数据类型以及该变量的用法。这种命名变量的方法称为匈牙利记号表示法
+<ul>
+<li>sz：以零结尾的字符串</li>
+<li>str：字符串</li>
+<li>i:int</li>
+<li>n:数或int</li>
+<li>ui:Unsigned int</li>
+<li>c:char</li>
+<li>w:WORD(unsigned short)</li>
+<li>dw:DWORD(unsigned long)</li>
+<li>fn:函数指针(function pointer)</li>
+<li>d:Double</li>
+<li>by:byte</li>
+<li>l:long</li>
+<li>p:pointer</li>
+<li>lp:long pointer</li>
+<li>lpstr:指向字符串的长指针</li>
+<li>h:句柄（handle）</li>
+<li>m_：类成员（class member）</li>
+<li>g_:全局型（global type）</li>
+<li>hwnd:窗口的句柄（window handle）</li>
+<li>hdc: Windows设备上下文（device context）的句柄</li>
+</ul>
+</li>
+</ul>
+<h4>13.2.2 入口函数</h4>
+<ul>
+<li>Windows程序也有一个主函数WinMain()。</li>
+<li>
+<p>WinMain函数的原型：</p>
+<pre><code>int WINAPI Winmain(
+    HINSTANCE hInstance,
+    HINSTANCE hPrevInstance,
+    LPSTR lpCmdLine,
+    int nCmdShow
+);
+</code></pre>
+
+</li>
+<li>WinMain函数接受4个参数，这些参数都是在系统调用WinMain函数时，传递给应用程序的。第一个参数为HINSTANCE类型，表示该程序当前运行的实例的句柄，句柄是标识某中对象（如这里应用程序实例）的一个整数值。当程序在Windows下运行时，它唯一标识应用程序的运行实例。一个应用程序可以运行多个实例，对于每一个运行实例，系统都会给该实例分配一个句柄值，并通过hInstance参数传递给WinMain函数</li>
+<li>传递的第二个参数hPrevInstance是从16位版本Windows操作系统继承下来的。现在已经失去意义，值总为NULL</li>
+<li>第三个参数lpCmdLine是一个以空终止的C样式字符串，该字符串包含传递给应用程序的命令行参数。</li>
+<li>第四个参数nCmdShow指定程序的窗口应该如何显示，例如最大化、最小化等。该参数可以是一组固定的数值之一，这些数值是有SW<em>SHOWNORMAL和SW</em>SHOWMINNOACTIVE这样的一些符号常量定义的。通常不需要检查nCmdLine的值，而是直接将其传递给负责显示应用程序窗口的Windows API函数</li>
+<li>关于WinMain函数前的修饰符WINAPI，它是一个Windows定义的说明符，它规定了函数调用的规范，即规定了函数的出栈和入栈顺序和方法。使得操作系统能成功调用函数不同语言编写的程序</li>
+<li>
+Windows程序中的WinMain()函数需要完成4个任务
+<ul>
+<li>设计一个窗口类，即创建窗口的设计蓝图</li>
+<li>创建窗口，即根据窗口的设计蓝图创建一个具体的窗口</li>
+<li>初始化窗口，设置窗口在屏幕上的显示方式</li>
+<li>获取属于该程序的Windows消息</li>
+</ul>
+</li>
+<li>下面介绍这4个任务，然后创建一个完整的WinMain()函数。</li>
+<li>
+<p>设计窗口类：</p>
+<ul>
+<li>
+<p>一个完整的窗口具有许多特性，包括光标，图案，背景色等Windows定义了一个名为WNDCLASSEX结构，该结构包含可以用来指定窗口特性的数据。存储在该结构对象中的数据定义了一个窗口类，用这个类来确定窗口的特性WNDCLASSEX结构体的定义如下</p>
+<p>struct WNDCLASSEX
+{
+	UINT cbSize;
+	UINT style;
+	WNDPROC lpfnWndProc;
+	int cbClsExtra;
+	int cbWndExtra;
+	HINSTANCE hInstance;
+	HICON hIcon;
+	HCURSOR hCursor;
+	HBRUSH hbrBackground;
+	LPCTSTR lpszMenuName;
+	LPCTSTR lpszClassName;
+	HICON hIconSm;
+}</p>
+</li>
+</ul>
+</li>
+<li>
+<p>在设计窗口类时，需要创建WNDCLASSEX类型的对象，例如：</p>
+<pre><code>WNDCLASSEX WindowClass;
+</code></pre>
+
+</li>
+<li>现在就需要设置WindowClass对象成员的数值。</li>
+<li>
+下面对WNDCLASSEX结构体成员变量逐一说明。
+<ul>
+<li>第一个成员cbSize用于保证结构体的大小。只需要用sizeof运算符就可以计算出WNDCLASSEX结构的大小。</li>
+<li>
+第二个成员style决定着这一类窗口的样式，style成员的值是以CS_为开头的字符常量。常用的样式如下：
+<ul>
+<li>CS_HREDRAW 当窗口水平方向上的宽度发生变化时，重绘整个窗口</li>
+<li>CS_VREDRAW 当窗口垂直方向上的宽度发生变化时，重绘整个窗口</li>
+<li>CS_NOCLOSE 禁用系统菜单的Close命令，这将是窗口没有关闭按钮 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
