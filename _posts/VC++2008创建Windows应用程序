@@ -1,0 +1,309 @@
+---
+layout: post
+title:  "创建Windows应用程序"
+date:   2017-06-01 16:14 +0000
+categories: VC++2008学习笔记
+---
+#第三篇 Windows应用程序开发
+##第13章 创建Windows应用程序
+###13.1 认识Windows应用程序
+####13.1.1 窗口
+* Windows应用程序的一个最大特点就是它的图形化用户界面。
+* Windows程序生成3个窗口：
+    * 最外层的大窗口包含菜单栏和工具栏，因此该窗口称为主窗口或父窗口
+    * 在主窗口内部的小窗口是父窗口的子窗口。一个父窗口可以有多个子窗口
+* 一个典型窗口的基本组成包括：
+    * 边框，标题栏和客户区
+    
+####13.1.2 Windows程序的工作过程
+* WindoWs程序都是在Windows操作系统的控制下运行的
+* Windows操作系统是多任务的
+* Windows操作系统通过放在目标程序的消息队列中的消息与应用程序进行通信
+* 筛选应用程序关心的消息，以应用程序的要求处理这些消息，并将其余消息回传给Windows
+
+####13.1.3 Windows API
+* Windows引用程序与操作系统之间的所有通信，都要使用Windows应用程序编程接口（Windows API）。API的出现早于C++，其中中并没类的概念，主要用结构来表示数据
+* API函数多，覆盖广，较难记忆。于是微软随后以面向对象的方式重新组织了这些API函数，升级为（Microsoft Foundation Classes即MFC）。另外，VC++2008中，还针对CLR提供了Windows Form程序，其创建窗口的代码完全是自动生成的
+
+###13.2 Windows程序结构
+####13.2.1 Windows数据类型
+* Windows提供一些数据类型。Windows API函数的返回类型和形参都会使用这些类型，并且在MFC中会继续使用到。这些数据类型都映射为某种C++数据类型。
+* Windows数据类型都包含在windows.h头文件中，因此在Windows程序中应该包含该头文件。
+* 句柄是Windows中一个非常重要的概念
+* 在Windows程序中，变量名拥有的前缀都能指出变量容纳的数据类型以及该变量的用法。这种命名变量的方法称为匈牙利记号表示法
+ * sz：以零结尾的字符串
+ * str：字符串
+ * i:int
+ * n:数或int
+ * ui:Unsigned int
+ * c:char
+ * w:WORD(unsigned short)
+ * dw:DWORD(unsigned long)
+ * fn:函数指针(function pointer)
+ * d:Double
+ * by:byte
+ * l:long
+ * p:pointer
+ * lp:long pointer
+ * lpstr:指向字符串的长指针
+ * h:句柄（handle）
+ * m_：类成员（class member）
+ * g_:全局型（global type）
+ * hwnd:窗口的句柄（window handle）
+ * hdc: Windows设备上下文（device context）的句柄
+
+####13.2.2 入口函数
+* Windows程序也有一个主函数WinMain()。
+* WinMain函数的原型：
+
+		int WINAPI Winmain(
+			HINSTANCE hInstance,
+			HINSTANCE hPrevInstance,
+			LPSTR lpCmdLine,
+			int nCmdShow
+		);
+* WinMain函数接受4个参数，这些参数都是在系统调用WinMain函数时，传递给应用程序的。第一个参数为HINSTANCE类型，表示该程序当前运行的实例的句柄，句柄是标识某中对象（如这里应用程序实例）的一个整数值。当程序在Windows下运行时，它唯一标识应用程序的运行实例。一个应用程序可以运行多个实例，对于每一个运行实例，系统都会给该实例分配一个句柄值，并通过hInstance参数传递给WinMain函数
+* 传递的第二个参数hPrevInstance是从16位版本Windows操作系统继承下来的。现在已经失去意义，值总为NULL
+* 第三个参数lpCmdLine是一个以空终止的C样式字符串，该字符串包含传递给应用程序的命令行参数。
+* 第四个参数nCmdShow指定程序的窗口应该如何显示，例如最大化、最小化等。该参数可以是一组固定的数值之一，这些数值是有SW_SHOWNORMAL和SW_SHOWMINNOACTIVE这样的一些符号常量定义的。通常不需要检查nCmdLine的值，而是直接将其传递给负责显示应用程序窗口的Windows API函数
+* 关于WinMain函数前的修饰符WINAPI，它是一个Windows定义的说明符，它规定了函数调用的规范，即规定了函数的出栈和入栈顺序和方法。使得操作系统能成功调用函数不同语言编写的程序
+* Windows程序中的WinMain()函数需要完成4个任务
+ * 设计一个窗口类，即创建窗口的设计蓝图
+ * 创建窗口，即根据窗口的设计蓝图创建一个具体的窗口
+ * 初始化窗口，设置窗口在屏幕上的显示方式
+ * 获取属于该程序的Windows消息
+* 下面介绍这4个任务，然后创建一个完整的WinMain()函数。
+* 设计窗口类：
+ * 一个完整的窗口具有许多特性，包括光标，图案，背景色等Windows定义了一个名为WNDCLASSEX结构，该结构包含可以用来指定窗口特性的数据。存储在该结构对象中的数据定义了一个窗口类，用这个类来确定窗口的特性WNDCLASSEX结构体的定义如下
+
+		struct WNDCLASSEX
+		{
+			UINT cbSize;
+			UINT style;
+			WNDPROC lpfnWndProc;
+			int cbClsExtra;
+			int cbWndExtra;
+			HINSTANCE hInstance;
+			HICON hIcon;
+			HCURSOR hCursor;
+			HBRUSH hbrBackground;
+			LPCTSTR lpszMenuName;
+			LPCTSTR lpszClassName;
+			HICON hIconSm;
+		}
+* 在设计窗口类时，需要创建WNDCLASSEX类型的对象，例如：
+
+		WNDCLASSEX WindowClass;
+* 现在就需要设置WindowClass对象成员的数值。
+* 下面对WNDCLASSEX结构体成员变量逐一说明。
+ * 第一个成员cbSize用于保证结构体的大小。只需要用sizeof运算符就可以计算出WNDCLASSEX结构的大小。
+ * 第二个成员style决定着这一类窗口的样式，style成员的值是以CS_为开头的字符常量。常用的样式如下：
+     * CS_HREDRAW 当窗口水平方向上的宽度发生变化时，重绘整个窗口
+     * CS_VREDRAW 当窗口垂直方向上的宽度发生变化时，重绘整个窗口
+     * CS_NOCLOSE 禁用系统菜单的Close命令，这将是窗口没有关闭按钮 
+     * CS_DBLCLKS 当用户在窗口中双击鼠标时，向窗口过程发送鼠标双击消息
+
+* 如果需要两个或多个样式，可以使用按位或运算符“|”结合这些常量，从而产生一个复合样式。例如，要让窗口在水平和垂直尺寸发生变化时发生重绘，可以使用按位或（|）运算符将CS_HREDRAW和CS_VREDRAW组合起来
+
+		WindowClass.style = CS_HREDRAW|CS_VREDRAW;
+* 成员变量lpfnWndProc是一个函数指针，指向程序中处理消息的函数。需要注意，窗口函数是一个回调函数，回调函数的意思就是该函数不是在程序中直接调用，而是在特定的时间或条件发生时由Windows操作系统调用，对该事件或条件进行响应的。现在假设窗口函数的名称为WinProc()，那么成员变量lpfnWndProc的值就应该为
+
+		WindowClass.lpfnWinProc = WinProc;
+* 成员变量cbClsExtra和cbWndExtra允许用户请求Windows在内部提供一些额外的空间，以便使用额外数据与窗口的每一个实例发生联系。通常不需要分配额外的空间，这种情况下只需要将它们设置为0即可
+* 成员变量hInstance指定当前应用程序的实例句柄，因此应该将该成员设置为Windows传递给WinMain()函数的值。
+
+		WindowClass.hInstance = hInstance;
+* 成员变量hIcon指定窗口类的图标句柄。这个成员变量必须是一个图标资源的句柄，如果这个成员为NULL，那么系统将提供一个默认的图标。在向hIcon成员变量赋值时，可以调用Windows API函数LoadIcon()来加载一个图标资源，返回系统分配给该图标的句柄。该函数的原型声明如下所示：
+
+		HICON LoadIcon(HINSTANCE hInstance,LPCTSTR lpIconName)
+* LocalIcon函数不仅可以加载Windows系统提供的标准图标到内存中，还可以加载由用户自己制作的图标资源到内存中，并返回系统分配给该图标的句柄。如果加载系统的标准图标，那么第一个参数是NULL。第二个参数是LPCTSTR类型，其中包含被加载的图标的资源名称。如果要使用Windows预定义的图标，lpIconName可以使用下列值：
+ * IDI_APPLICATION 默认应用程序的图标
+ * IDI_QUESTION 问号图标
+ * IDI_ERROR 错误图标
+ * IDI_EXCLAMATION 感叹号图标
+ * IDI_ASTERISK 星号图标
+ * IDI_WINLOGO Windows的图标
+ * IDI_HAND 与IDI_ERROR相同
+ * IDI_INFORMATION 消息图标
+ * IDI_WARNING 警告图标
+
+* 成员变量hCursor指定窗口类的光标句柄。在为hCursor变量赋值时，可以调用LoadCursor函数来加载一个光标资源，返回系统分配给该光标的句柄。该函数的原型声明如下所示。
+
+		HCURSOR LoadCursor(HINSTANCE hInstance,LPCTSTR lpCursorName);
+* 成员变量hbrBackground指定窗口类的背景画刷句柄。当窗口发生重绘时，系统会使用这里指定的画刷来擦除窗口的背景。可以调用GetStockObject()函数来得到系统的标准画刷。
+
+		HGDIOBJ GetStockObject(int fnObject);
+* 参数fnObject指定要获取的对象的类型，下面是该参数取值范围的一部分。
+ * BLACK_BRUSH 黑色刷
+ * DKGRAY_BRUSH 深灰色刷
+ * GRAY_BRUSH 灰色刷
+
+* 由于GetStockObject()函数可以返回多种资源对象的句柄，在实际使用时，需要进行类型转换。例如，要为hbrBackground成员指定一个深灰色画刷的句柄，可以调用如下。
+
+		WindowClass.hbrBackground = static_cast<HBRUSH>(GetStockObject(DKGRAY_BRUSH));
+* 成员变量lpszMenuName是一个以空终止的字符串，指定菜单资源的名字。如果该窗口没有菜单，则应该将其设置为0。
+* 成员变量lpszClassName是一个以空终止的字符串，指定窗口类的名字。需记住该名称，在创建窗口中将会使用该名称。该成员通常是一下面的语句设置的。
+
+		const char* ClassName = "ATG";
+		WindowClass.lpszClassName = ClassName;
+* 最后一个成员变量是hIconSm，这标识某个窗口最小化时显示的图标。如果将该成员设置为空，则Windows将使用hIcon标识的图标。
+* 结构WNDCLASSEX是对原来WINDCLASS的扩充，旧结构未包含存储结构大小的cbSize成员，以及窗口最小化图标hIconSm成员
+* 创建窗口类
+* 设计完窗口类后，就需要将相关情况通知Windows。通知Windows需要使用API函数RegisterClassEx()。假设前面创建的WNDCLASSEX结构对象为WindowClass，则调用RegisterClassEx()函数向系统注册窗口类的方法为：
+
+		RegisterClassEx(&WindowClass);
+* 在设计好窗口类并且将其成功注册之后，就可以用CreateWindow()函数创建这种类型的窗口。CreateWindow函数的原型声明如下：
+
+		HWND CreateWindow(
+			LPCTSTR lpClassName,
+			LPCTSTR lpWindowName,
+			DWORD dwStyle,
+			int x,
+			int y,
+			int nWidth,
+			int nHeight,
+			HWND hWndParent,
+			HMENU hMenu,
+			HANDLE hInstance,
+			LPVOID lpParam);
+* 参数lpClassName指定窗口类的名称，即设计窗口类时WNDCLASSEX的lpszClassName成员指定的名称，表示要创建该类型的窗口。创建产生窗口的具体过程是由操作系统完成的，如果在调用CreateWindow()函数之前未使用RegisterClassEx()函数窗口类，则操作系统将无法得知这一类型窗口的相关信息，从而导致窗口创建失败。
+* 参数lpWindowName指定在窗口标题栏中显示的标题。参数dwStyle指定创建的窗口的样式。要注意区分WNDCLASSEX中的style成员与CreateWindow函数的dwStyle参数，前者指定窗口类的样式。通常指定窗口的类型为WS_OVERLAPPEDWINDOW，该类型是多种窗口类型的组合。下面是                                   WS_OVERLAPPEDWINDOW的各种样式：
+ * WS_OVERLAPPED 产生一个层叠的窗口，一个层叠的窗口有一个标题栏和一个边框
+ * WS_CAPTION 创建一个有标题栏的窗口
+ * WS_SYSMENU 创建一个在标题栏上带有系统菜单的窗口，要和 WS_CAPTION类型一起使用
+ * WS_THICKFRAME 创建一个具有可调边框的窗口
+ * WS_MINIMIZEBOX 创建一个具有最小化按钮的窗口，必须同时设定WS_SYSMENU类型
+ * WS_MAXIMIZEBOX 创建一个具有最大化按钮的窗口，必须同时设定WS_SYSMENU类型
+
+* CreateWindow()函数的参数x、y、nWidth、nHieght分别指定窗口左上角的x、y坐标，窗口的宽度、高度。如果设置为CW_USEDEFAULT，那么系统将为窗口分配默认位置和大小。CW_USEDEFAULT仅适用于WS_OVERLAPPED样式的窗口
+* 参数hWndParent指定被创建窗口的父窗口句柄。窗口之间可以有父子关系，子窗口必须具有WS_CHILD样式。如果该参数为0，则表明被创建的窗口不是子窗口。如果希望创建子窗口，则该参数应该为父窗口的句柄。
+* 参数hMenu指定窗口菜单的句柄，如果为0，则表示窗口没有菜单。hIstance指定窗口所属应用程序的实例句柄。参数lpParam为创建窗口时传入的数据指针，在创建多文档窗口时，lpParam必须指向CLIENTCREATESTRUCT结构体。多数情况下只需要将这个参数设置为0.
+* 如果窗口创建成功，CreateWindow()函数将返回系统为该窗口分配的句柄，否则返回NULL。在创建窗口之前应先定义一个窗口句柄变量，以保存创建的窗口句柄。下面是创建窗口的一个示例：
+
+		HWND hWnd;
+		hWnd = CreateWindow(
+			ClassName,
+			"基本Windows窗口",
+			WS_OVERLAPPEDWINDOW,
+			CW_USEDEFAULT,
+			CW_WSEDEFAULT,
+			CW_WSEDEFAULT,
+			CW_WSEDEFAULT,
+			0,
+			0,
+			hInstance,
+			0);
+* 与CreateWindow()相对应的，Windows API还提供了一个扩展的CreateWindowEx()函数。
+* 初始化窗口。窗口创建之后，就需要让它显示出来。调用ShowWindow()函数来显示窗口，该函数的原型声明如下：
+
+		BOOL ShowWindow(
+			HWND hWnd,
+			int nCmdShow
+		);
+* ShowWindow()函数有两个参数：第一个参数hWnd就是在先前创建窗口后返回的窗口句柄；第二个参数nCmdShow指定了窗口在屏幕上的显示的方式，通常是传递给WinMain()的nCmdShow参数。例如：
+
+		ShowWindow(hWnd,nCmdShow);
+* 在调用ShowWindow()函数之后，该窗口将出现在屏幕上，但仍然没有应用程序的内容，因此用户需要通知程序，在窗口的客户区中输入信息，这就需要使用UpdateWindow()，通知Windows应用程序重绘客户区。UpdateWindow函数的原型声明如下。
+
+		BOOL UpdateWindow(HWND hWnd);
+* 该函数只需要一个参数，即应用程序的窗口句柄。
+* 消息循环。最后一项任务就是编写一个消息循环，不断地从消息队列中取出消息，并进行响应。要从消息队列中取出消息，需要调用GetMessage()函数。该函数的原型声明如下：
+
+		BOOL GetMessage(
+			LPMSG lpMsg,
+			HWND hWnd,
+			UINT wMsgFilterMin,
+			UINT wMsgFilterMax,
+		);
+* 第一个参数lpMsg是指向一个消息（MSG）的结构体，GetMessage()从消息队列中获取的消息将保存在该结构体对象中。下面是MSG结构的定义。
+
+		struct MSG
+		{
+			HWND hwnd;       //消息所在的窗口的句柄
+			UINT message;    //标识消息的ID值，如WM_SIZE、WM_COMMAND、WM_QUIT等
+			WPARAM wParam;   //32位的消息参数，其含义和值根据消息的不同而不同
+			LPARAM lParam;   //32位的消息参数，其值和消息无关
+			DWORD time;      //消息进入消息队列的时间
+			POINT pt;        //消息进入消息队列时鼠标坐标
+		｝
+* GetMessage()函数的第二个参数为某个窗口的句柄，如果希望只获取某窗口的消息，就可以设置该窗口的句柄。如果该参数为0，则GetMessage()函数将获取应用程序的所有消息。
+* GetMessage()函数后两个参数是两个整数值，它们存储希望从队列中获取的消息ID的最小值和最大值，从而可以选择要获取的消息。如果这两个参数为0，那么将获取所有消息。
+* GetMessage()函数总是返回True，除非接收到终止程序的WM_QUIT消息。如果出现了错误，该函数返回-1，例如，当参数hWnd是无效的窗口句柄或lpMsg是无效的指针时。
+* 通常编写的消息代码如下：
+
+		MSG msg;
+		while(GetMessage(&msg,NULL,0,0) == TRUE)
+		{
+			TranslateMassage(&msg);
+			DispatchMessage(&msg);
+		}
+
+####13.2.3 窗口过程函数
+* 在完成WinMain()函数后，剩下的工作就是编写一个窗口过程函数，以处理发送给窗口的消息。一个Windows应用程序的主要代码就集中在窗口过程函数中。窗口过程函数的原型为：
+
+		LRESULT CALLBACK WndProc(
+			HWND hwnd,      //一个窗口句柄，指向接受消息的函数
+			UINT uMsg,      //消息的ID值，是一个32位的整数
+			WPARAM wParam,  //包含与消息种类有关的附加信息，是32位的整数
+			LPARAM lParam,  //包含与消息种类有关的附加信息，是32位的整数
+		);
+* 窗口过程函数的名称可以很随意，如WndProc，但函数定义的形式必须和上述声明的形式相同。窗口过程函数的返回类型为LRESULT，它是Windows定义的类型，通常等价于long类型，因为该函数是Windows通过指针（在设计窗口类时设置的WNDCLASSEX的lpfnWndProc成员）调用的，所以需要将该函数限定为CALLBACK。CALLBACK也是Windows定义的一种调用规定，它与WINAPI相同。
+* 在窗口过程函数内使用switch语句来确定接受到消息类型，以及对这个消息进行处理。下面是一个窗口过程函数的代码：（略）
+* 在switch语句中，每一个分支对应一条消息。Windows使用符号常量来标识各个消息，它们都是以WM_开头。在本程序中包含要处理的消息：WM_LBUTTONDOWN、WM_PAINT、WM_CLOSE和WM_DESTROY。
+* 当用户在窗口中单击时，将产生WM_LBUTTONDOWN消息。在处理该消息时，窗口过程函数会弹出一个提示对话框。
+* 当窗口客户区的仪股份或者全部变为无效时，系统会发送WM_PAINT消息，通知应用程序重新绘制窗口。当窗口创建时，整个客户区都是无效的。因为这个时候程序还没有在窗口上绘制任何东西，当调用UpdateWindow()函数时，Windows就会向程序发送WM_PAINT消息，对窗口进行刷新。当窗口从无到有、改变尺寸、最小化后再恢复、被其他窗口遮盖后再显示时，窗口的客户区都将变为无效，此时系统会给应用程序发送WM_PAINT消息，通知应用程序重新绘制。
+* 在重绘窗口客户区时，首先需要通知Windows现在要进行窗口的重绘。这需要调用Windows API函数BeginPaint()，该函数应该在只响应WM_PAINT消息调用。
+
+		HDC hDC;
+		PAINTSTRUCT ps;
+		hDC = BeginPaint(hwnd,&ps);
+* HDC类型就是所谓的设备上下文的句柄。当想要在屏幕上绘制一个窗口时，需掌握所用的图形设备和它的驱动程序，调用驱动程序的接口来完成图形的显示。不同图形设备的驱动程序是不一样的，对于程序员而言，这就需要掌握各种不同的驱动程序，这将是非常困难的。因此Windows就提供了一个DC（设备上下文），由它和设备驱动程序进行通信，完成图形的绘制。对于用户来说，只需要获取DC的句柄，调用相应的API函数就可以在该DC对应的设备中绘制图形。
+* BeginPaint()函数的返回值就是需要重绘窗口所在设备的DC，该函数需要两个参数。第一个参数是窗口的句柄，用来标识输出的目标窗口。第二个参数是PAINTSTRUCT结构体的地址，该结构体对象用于接收绘制的信息。不用太了解PAINTSTRUCT结构，因为在Visual C++2008中已经很少使用。在这里只需要在窗口客户区显示一段文本，在窗口客户区显示文本可以调用TextOut()函数。
+
+		TextOut(hDC,100,100,"Visual C++ 2008",sizeof("Visual C++ 2008")-1);
+* TextOut()函数的第一个参数是窗口的DC句柄。第二个和第三个参数是输出字符串在窗口的起始位置。第四个参数是要显示的字符，第五个参数是字符串的长度
+* 在输出所希望的字符串后，必须通知Windows结束窗口绘制。EndPain()函数
+* 可以使用下面的语句生成一条WM_QUIT消息
+
+		PostQuitMessage(0);
+* default:DefWindowProc()
+
+####13.2.4 一个简单的Windows程序
+
+###13.3 使用MFC
+* MFC是一组预定义的类
+* 所有MFC提供的类都是以C开头，表示Class。在MFC类中，数据成员都是以m_为前缀。另外，MFC中的许多变量也使用匈牙利命名法，特别是那些源于Windows API的变量。
+
+		#include <afxwin.h>
+		
+		class CMyApp : public CWinApp  //派生应用程序类
+		{
+			BOOL InitInstance();
+		};
+		class CMyWnd : public CFrameWnd //派生窗口类
+		{
+		public:
+			CMyWnd()
+			{
+				Create(0,L"MFC应用程序");  //Create()函数是继承于基类CFrameWnd的，该函数创建一个窗口，并使该窗口附属于被创建的CMyWnd对象
+				                           //Create()函数的第一个参数是设计的窗口类名（此处为设计WNDCLASSEX结构时指定的类名），设置为0表示使用基类的默认值。
+			}
+		};
+		
+		BOOL CMyApp::InitInstance()  //重写InitInstance()函数
+		{
+			//在堆内存创建一个窗口类的对象
+			m_pMainWnd = new CMyWnd;   
+			m_pMainWnd->ShowWindow(m_nCmdShow);
+			return CWinApp::InitInstance();
+		}
+		
+		CMyApp theApp;
+
+###13.4 使用Windows Forms
+* Windows Forms是一种基于窗体的开发机制，用于创建用户在CLR中执行的应用程序。在Windows Forms应用程序中，可以通过图形方式布置与用户交互的控件。用户只需要按照自己的意图在窗体中放置控件即可，创建这些控件的代码将自动生成。
+* 窗体是表示某种窗口的实体，是由System::Windows::Forms::Form类的子类封装的。
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
