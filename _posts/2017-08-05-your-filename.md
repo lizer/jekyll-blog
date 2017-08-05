@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Test!"
-date:   2017-08-02 17:05:13 +0000
+title: Test!
+date: '2017-08-02 17:05:13 +0000'
 categories: jekyll update
+published: true
 ---
-## A New Test Post
+## A New Test Post 2
 
 # H1
 ## H2
