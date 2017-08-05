@@ -1,5 +1,8 @@
 ---
-published: false
+layout: post
+title:  "Welcome to Jekyll!"
+date:   2017-08-02 17:05:13 +0000
+categories: jekyll update
 ---
 ## A New Test Post
 
