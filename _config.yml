@@ -16,6 +16,7 @@
 title: Qian Hui' Blog
 email: qianhui At zju.edu.cn
 description: > # this means to ignore newlines until "baseurl:"
+Enjoy all the days.
 Enjoy all the posts.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
