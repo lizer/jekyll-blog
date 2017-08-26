@@ -1,23 +1,8 @@
 ---
 layout: post
 title: Test!
-date: '2017-08-02 17:05:13 +0000'
+date: '2017-08-25 17:05:13 +0000'
 categories: jekyll update
 published: true
 ---
-## A New Test Post 2
-
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-
-Alternatively, for H1 and H2, an underline-ish style:
-
-Alt-H1
-======
-
-Alt-H2
-------
+## 论文讨论:SVRG+NR
