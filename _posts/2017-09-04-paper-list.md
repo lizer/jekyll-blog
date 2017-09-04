@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 论文讨论:SVRG+NR
+title: SGD论文列表
 date: '2017-09-04 17:05:13 +0000'
 categories: jekyll update
 published: true
