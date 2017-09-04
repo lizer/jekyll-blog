@@ -8,8 +8,8 @@ published: true
 
 随机梯度下降相关论文：
 
-. ABCDE
-. ABCDE
-. ABCDE
-. ABCDE
+* ABCDE
+* ABCDE
+* ABCDE
+* ABCDE
 
