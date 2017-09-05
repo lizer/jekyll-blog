@@ -8,7 +8,6 @@ published: true
 
 随机梯度（包括降方差梯度下降）下降相关论文：
 
-
 * **Stochastic Averaged Gradient**:
 	* Roux, Nicolas L., Mark Schmidt, and Francis R. Bach. "*A stochastic gradient method with an exponential convergence rate for finite training sets.*" Advances in Neural Information Processing Systems. 2012.
 
@@ -33,7 +32,7 @@ published: true
 	* Allen-Zhu, Zeyuan. "*Katyusha: Accelerated Variance Reduction for Faster SGD.*" arXiv preprint arXiv:1603.05953 (2016).
 
 深度学习优化相关论文：
-* Adam
+* **Adam**:
 	* Kingma, Diederik, and Jimmy Ba. "*Adam: A method for stochastic optimization.*" arXiv preprint arXiv:1412.6980 (2014).
 
 * **Neural Networks: Tricks of the trade**:
