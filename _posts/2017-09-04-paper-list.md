@@ -70,3 +70,6 @@ published: true
 
 * **Quasi-newton**:
 	* **[bordes2009sgd]** Bordes, Antoine, Léon Bottou, and Patrick Gallinari. "*Sgd-qn: Careful quasi-newton stochastic gradient descent.*" Journal of Machine Learning Research 10.Jul (2009): 1737-1754.
+
+* **Gradient descent only converges to minimizers**:
+	* **[lee2016gradient]** Lee, Jason D., et al. "*Gradient descent only converges to minimizers.*" Conference on Learning Theory. 2016.
