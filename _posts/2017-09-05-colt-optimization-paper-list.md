@@ -1,6 +1,6 @@
 ---
 layout: post
-title: COLT优化相关论文列表
+title: COLT2016优化相关论文列表
 date: '2017-09-05 17:05:13 +0000'
 categories: jekyll update
 published: true
