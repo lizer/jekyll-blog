@@ -6,7 +6,7 @@ categories: jekyll update
 published: true
 --- 
 
-###降方差梯度下降相关论文：
+### 降方差梯度下降相关论文：
 * **Stochastic Averaged Gradient**:
 	* **[roux2012stochastic]** Roux, Nicolas L., Mark Schmidt, and Francis R. Bach. "*A stochastic gradient method with an exponential convergence rate for finite training sets.*" Advances in Neural Information Processing Systems. 2012.
 
@@ -30,7 +30,7 @@ published: true
 	* **[lin2015universal]** Lin, Hongzhou, Julien Mairal, and Zaid Harchaoui. "*A universal catalyst for first-order optimization.*" Advances in Neural Information Processing Systems. 2015.
 	* **[allen2016katyusha]** Allen-Zhu, Zeyuan. "*Katyusha: Accelerated Variance Reduction for Faster SGD.*" arXiv preprint arXiv:1603.05953 (2016).
 
-###深度学习优化相关论文：
+### 深度学习优化相关论文：
 
 * **Natural gradient algorithm**:
 	* **[roux2008topmoumoute]** Roux, Nicolas L., Pierre-Antoine Manzagol, and Yoshua Bengio. "*Topmoumoute online natural gradient algorithm.*" Advances in neural information processing systems. 2008.
