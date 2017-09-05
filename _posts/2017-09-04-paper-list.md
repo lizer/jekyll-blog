@@ -36,3 +36,6 @@ published: true
 * Adam
 	* Kingma, Diederik, and Jimmy Ba. "*Adam: A method for stochastic optimization.*" arXiv preprint arXiv:1412.6980 (2014).
 
+* **Neural Networks: Tricks of the trade**:
+	* Bengio, Yoshua. "*Practical recommendations for gradient-based training of deep architectures.*" Neural networks: Tricks of the trade. Springer Berlin Heidelberg, 2012. 437-478.
+
