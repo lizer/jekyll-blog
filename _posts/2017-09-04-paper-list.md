@@ -27,7 +27,7 @@ published: true
 * **SAGA**:
 	* Defazio, Aaron, Francis Bach, and Simon Lacoste-Julien. "*Saga: A fast incremental gradient method with support for non-strongly convex composite objectives.*" Advances in Neural Information Processing Systems. 2014.
 
-* Accelerated Algorithm and **Katyusha**:
+* **Accelerated Algorithm**:
 	* Frostig, Roy, et al. "*Un-regularizing: approximate proximal point and faster stochastic algorithms for empirical risk minimization.*" International Conference on Machine Learning. 2015.
 	* Lin, Hongzhou, Julien Mairal, and Zaid Harchaoui. "*A universal catalyst for first-order optimization.*" Advances in Neural Information Processing Systems. 2015.
 	* Allen-Zhu, Zeyuan. "*Katyusha: Accelerated Variance Reduction for Faster SGD.*" arXiv preprint arXiv:1603.05953 (2016).
