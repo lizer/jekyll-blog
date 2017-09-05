@@ -40,7 +40,7 @@ published: true
 	* **[glorot2010understanding]** Glorot, Xavier, and Yoshua Bengio. "*Understanding the difficulty of training deep feedforward neural networks.*" Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics. 2010.
 
 * **Hyper-parameter**:
-	* **[]** Bergstra, James, and Yoshua Bengio. "*Random search for hyper-parameter optimization.*" Journal of Machine Learning Research 13.Feb (2012): 281-305.
+	* **[bergstra2012random]** Bergstra, James, and Yoshua Bengio. "*Random search for hyper-parameter optimization.*" Journal of Machine Learning Research 13.Feb (2012): 281-305.
 
 * **Neural Networks: Tricks of the trade**:
 	* **[bengio2012practical]** Bengio, Yoshua. "*Practical recommendations for gradient-based training of deep architectures.*" Neural networks: Tricks of the trade. Springer Berlin Heidelberg, 2012. 437-478.
