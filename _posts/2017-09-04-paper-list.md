@@ -44,7 +44,6 @@ published: true
 
 * **Neural Networks: Tricks of the trade**:
 	* **[bengio2012practical]** Bengio, Yoshua. "*Practical recommendations for gradient-based training of deep architectures.*" Neural networks: Tricks of the trade. Springer Berlin Heidelberg, 2012. 437-478.
-
 	* **[martens2012training]** Martens, James, and Ilya Sutskever. "*Training deep and recurrent networks with hessian-free optimization.*" Neural networks: Tricks of the trade. Springer Berlin Heidelberg, 2012. 479-535.
 
 * **Learning rate**:
