@@ -36,7 +36,7 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 
-#### Source code of Sample 1:
+#### Source code of Sample 2:
 
 	$$
 		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
@@ -47,7 +47,7 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 \\]
 
-#### Source code of Sample 1:
+#### Source code of Sample 3:
 
 	\\[
 		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
