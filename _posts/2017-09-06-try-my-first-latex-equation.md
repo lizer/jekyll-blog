@@ -36,6 +36,7 @@ $$
 $$
 
 Source code of Sample 1:
+
 	$$
 		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 	$$
@@ -47,7 +48,7 @@ Sample 3:
 
 Source code of Sample 1:
 
-\\[
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-\\]
+	\\[
+		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+	\\]
 
