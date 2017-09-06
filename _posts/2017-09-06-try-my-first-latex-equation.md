@@ -20,18 +20,34 @@ Input the following into the page head:
 		">
 	</script>
 
-
+Sample 1:
 OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
 n\in\mathbb N$$ is via through the Euler integral
+
+Source code of Sample 1:
 
 	OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
 	n\in\mathbb N$$ is via through the Euler integral
 
 
+Sample 2:
 $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 
+Source code of Sample 1:
+	$$
+		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+	$$
+
+Sample 3:
 \\[
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 \\]
+
+Source code of Sample 1:
+
+\\[
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+\\]
+
