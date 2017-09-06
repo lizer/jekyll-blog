@@ -21,7 +21,7 @@ Add the following into the page head:
 	</script>
 
 Sample 1:
-OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
+The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
 n\in\mathbb N$$ is via through the Euler integral
 
 Source code of Sample 1:
