@@ -6,20 +6,27 @@ categories: jekyll update
 published: true
 --- 
 
-	<script type="text/javascript"
-	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
-	/javascripts/MathJaxLocal.js
-	">
-	</script>
-
 <script type="text/javascript"
 	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
 	/javascripts/MathJaxLocal.js
 ">
 </script>
 
+Input the following into the page head:
+
+	<script type="text/javascript"
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
+		/javascripts/MathJaxLocal.js
+		">
+	</script>
+
+
 OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
 n\in\mathbb N$$ is via through the Euler integral
+
+	OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
+	n\in\mathbb N$$ is via through the Euler integral
+
 
 $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
