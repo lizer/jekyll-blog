@@ -12,7 +12,7 @@ published: true
 ">
 </script>
 
-Input the following into the page head:
+Add the following into the page head:
 
 	<script type="text/javascript"
 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
