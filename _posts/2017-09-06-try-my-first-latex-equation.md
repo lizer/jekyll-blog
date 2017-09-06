@@ -5,6 +5,13 @@ date: '2017-09-06 17:05:13 +0000'
 categories: jekyll update
 published: true
 --- 
+
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
+	/javascripts/MathJaxLocal.js
+">
+</script>
+
 The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
 n\in\mathbb N$$ is via through the Euler integral
 
