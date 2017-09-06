@@ -7,5 +7,5 @@ published: true
 mathjax: true
 --- 
 
-ABCDEFG5:
+ABCDEFG6:
 $$a^2 + b^2 = c^2$$
