@@ -1,8 +1,9 @@
 ---
 layout: page
-title: About
+title: 关于
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+出生92年的银行狗，热衷于所有提升效率的生活方式探索。（主要喜欢折腾软件）。
+
 
