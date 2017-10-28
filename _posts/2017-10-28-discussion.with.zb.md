@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Try latex equations in this blog
-date: '2017-09-06 17:05:13 +0000'
+date: '2017-10-28 17:06:13 +0000'
 categories: jekyll update
 published: true
 --- 
