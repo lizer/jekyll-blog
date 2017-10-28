@@ -42,10 +42,33 @@ void mexFunction(int nlhs, mxArray *plhs[],
 >>mex mklabc.c -I/$(MKL_INCLUDE_DIR) -L$(MKL_LIB_DIR) -lmkl_rt -lgomp -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp
 ```
 
-编译成功。
+编译成功。但是，运行会有大问题。。。
 
-#### 出错:
-matlab 崩溃，错误信息如下：
+#### 测试:
+
+```
+>> a = 1
+
+a =
+
+1
+
+>> b = 2
+
+b =
+
+2
+
+>> c = 4
+
+c =
+
+4
+
+>> mklabc(a, b, c)
+```
+
+运行后，matlab 崩溃，错误信息如下：
 
 ```
 Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so.
@@ -55,13 +78,15 @@ Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so.
 ### 参考文献：
 [A New Linking Model- SDL mkl_rt Since Intel MKL 10.3](https://software.intel.com/en-us/articles/a-new-linking-model-single-dynamic-library-mkl_rt-since-intel-mkl-103/)
 
-### 修正编译:
+
+### 修正：
+#### 编译方法:
 
 ```
 >>mex -v mklabc.c -I/$(MKL_INCLUDE_DIR) -L$(MKL_LIB_DIR) -lmkl_rt -lgomp
 ```
 
-### 测试:
+#### 测试:
 
 ```
 >> a = 1
