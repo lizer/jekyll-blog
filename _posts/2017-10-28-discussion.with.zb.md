@@ -20,13 +20,19 @@ and we have $$ \alpha > \frac{1}{8}$$, then we can obtain the following result.
 
 First of all, $$ -s \log (1+\alpha) \leq \log\frac{\epsilon}{\epsilon_0}$$. That is 
 \\[
-s \geq \frac{1}{1+\log\alpha} \log\frac{\epsilon_0}{\epsilon}.
+s \geq \frac{1}{\log(1+\alpha)} \log\frac{\epsilon_0}{\epsilon}.
 \\]
 
-We can easily have that 
+We can easily obtain that 
 \\[
-\frac{C}{\alpha} \log \frac{\epsilon_0}{\epsilon} \geq \left( \frac{1}{1+\alpha} \right) \log \frac{\epsilon_0}{\epsilon}.
+\frac{C}{\alpha} \log \frac{\epsilon_0}{\epsilon} \geq \left( \frac{1}{\log(1+\alpha)} \right) \log \frac{\epsilon_0}{\epsilon},
 \\]
+since 
+\\[
+f(\alpha) := \frac{\log(1+\alpha)}{\alpha} \geq \frac{1}{C},
+\\] 
+when $$C = f(1/8)$$. 
+
 
 
 
