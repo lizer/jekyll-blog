@@ -8,49 +8,48 @@ published: true
 
 ### 使用的代码
 
-'''c++
+```
+#include "mex.h"
+#include "mkl.h"
 
-	#include "mex.h"
-	#include "mkl.h"
-
-	void mexFunction(int nlhs, mxArray *plhs[], 
-		int nrhs, const mxArray *prhs[])
-	{
-		double  a = *mxGetPr(prhs[0]);
-		size_t  n =  mxGetM (prhs[1]);
-		double* x =  mxGetPr(prhs[1]);
- 		double* y =  mxGetPr(prhs[2]);
+void mexFunction(int nlhs, mxArray *plhs[], 
+    int nrhs, const mxArray *prhs[])
+{
+	double  a = *mxGetPr(prhs[0]);
+	size_t  n =  mxGetM (prhs[1]);
+	double* x =  mxGetPr(prhs[1]);
+	double* y =  mxGetPr(prhs[2]);
     
- 		plhs[0]= mxCreateDoubleMatrix(1,1,mxREAL);
-		double* z=mxGetPr(plhs[0]);        
+	plhs[0]= mxCreateDoubleMatrix(1,1,mxREAL);
+	double* z=mxGetPr(plhs[0]);        
 
-		if (n!=mxGetM(prhs[2])){
-		 	mexPrintf("x and y have different sizes.\n");
- 			return;
-		}
-
- 		*z = cblas_ddot(n, x, 1, y, 1);
-
- 		mexPrintf("We finish the work!\n");
+	if (n!=mxGetM(prhs[2])){
+	 	mexPrintf("x and y have different sizes.\n");
 		return;
 	}
-'''
+
+	*z = cblas_ddot(n, x, 1, y, 1);
+
+	mexPrintf("We finish the work!\n");
+	return;
+}
+```
 
 ### 错误:
 #### 编译方法:
 
-'''
+```
 >>mex mklabc.c -I/$(MKL_INCLUDE_DIR) -L$(MKL_LIB_DIR) -lmkl_rt -lgomp -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp
-'''
+```
 
 编译成功。
 
 #### 出错:
 matlab 崩溃，错误信息如下：
 
-'''
+```
 Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so.
-'''
+```
 
 
 ### 参考文献：
@@ -58,13 +57,13 @@ Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so.
 
 ### 修正编译:
 
-'''
+```
 >>mex -v mklabc.c -I/$(MKL_INCLUDE_DIR) -L$(MKL_LIB_DIR) -lmkl_rt -lgomp
-'''
+```
 
 ### 测试:
 
-'''
+```
 >> a = 1
 
 a =
@@ -90,6 +89,6 @@ ans =
 
      8
 >> 
-'''
+```
 
-The end.
+**The end**.
