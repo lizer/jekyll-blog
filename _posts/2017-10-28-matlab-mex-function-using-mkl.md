@@ -7,6 +7,7 @@ published: true
 --- 
 
 ### 使用的代码
+
 '''c++
 #include "mex.h"
 #include "mkl.h"
@@ -33,10 +34,16 @@ void mexFunction(int nlhs, mxArray *plhs[],
     return;
 }
 '''
-### 错误：
+
+### 错误:
+#### 编译方法:
+#### 出错:
+
 
 ### 参考文献：
 [A New Linking Model- SDL mkl_rt Since Intel MKL 10.3](https://software.intel.com/en-us/articles/a-new-linking-model-single-dynamic-library-mkl_rt-since-intel-mkl-103/)
 
-### 正确的编译：
+### 修正编译:
+
+### 测试:
 
