@@ -14,14 +14,20 @@ published: true
 
 If we have 
 \\[
-\alpha^{-s} \epsilon_0 \leq \epsilon,
+(1+\alpha)^{-s} \epsilon_0 \leq \epsilon,
 \\]
 and we have $$ \alpha > \frac{1}{8}$$, then we can obtain the following result.
 
-First of all, $$ -s \log \alpha \leq \log\frac{\epsilon_0}{\epsilon}$$. That is 
+First of all, $$ -s \log (1+\alpha) \leq \log\frac{\epsilon}{\epsilon_0}$$. That is 
 \\[
-s \geq \log\alpha \log\frac{\epsilon_0}{\epsilon}.
+s \geq \frac{1}{(1+\log\alpha)} \log\frac{\epsilon_0}{\epsilon}.
 \\]
+
+We can easily have that 
+\\[
+\frac{C}{\alpha} \log \frac{\epsilon_0}{\epsilon} \geq \left( \frac{1}{(1+\alpha)} \right) \log \frac{\epsilon_0}{\epsilon}.
+\\]
+
 
 
 #### 2. Sample 1:
