@@ -6,7 +6,7 @@ categories: jekyll update
 published: true
 --- 
 
-### 使用的代码
+### 1.使用的代码:
 
 ```
 #include "mex.h"
@@ -35,7 +35,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 }
 ```
 
-### 错误:
+### 2.错误:
 #### 编译方法:
 
 ```
@@ -75,11 +75,11 @@ Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so.
 ```
 
 
-### 参考文献：
+### 3.参考文献：
 [A New Linking Model- SDL mkl_rt Since Intel MKL 10.3](https://software.intel.com/en-us/articles/a-new-linking-model-single-dynamic-library-mkl_rt-since-intel-mkl-103/)
 
 
-### 修正：
+### 4.修正：
 #### 编译方法:
 
 ```
