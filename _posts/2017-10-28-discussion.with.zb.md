@@ -37,7 +37,7 @@ E  ( F(x^{(s)}) - F(x) ) \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon.
 
 Thus, we have to proof that for some $$C$$ and $$\alpha > 1/ 8$$
 \\[
-C (1+1/\alpha) \log (\epsilon_0 / \epsilon) \geq \{ 1 / \log(1+\alpha)) \log (\epsilon_0 / \epsilon)
+C (1+1/\alpha) \log (\epsilon_0 / \epsilon) \geq  (1 / \log(1+\alpha)) \log (\epsilon_0 / \epsilon)
 \\]
 
 
