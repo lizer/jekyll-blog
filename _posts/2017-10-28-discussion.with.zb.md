@@ -12,60 +12,51 @@ published: true
 ">
 </script>
 
-If we have 
+### property
+If, for $$\alpha \geq {1}/{8},$$
 \\[
-(1+\alpha)^{-s} \epsilon_0 \leq \epsilon,
+\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0. 
 \\]
-and we have $$ \alpha > \frac{1}{8}$$, then we can obtain the following result.
-
-First of all, $$ -s \log (1+\alpha) \leq \log\frac{\epsilon}{\epsilon_0}$$. That is 
+Then it imples that  
 \\[
-s \geq \frac{1}{\log(1+\alpha)} \log\frac{\epsilon_0}{\epsilon}.
+\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq \epsilon,
 \\]
+if $$s = C (1+1/\alpha) \log ({\epsilon_0}/{\epsilon}).$$ 
 
-We can easily obtain that 
+
+### proof
+If
 \\[
-\frac{C}{\alpha} \log \frac{\epsilon_0}{\epsilon} \geq \left( \frac{1}{\log(1+\alpha)} \right) \log \frac{\epsilon_0}{\epsilon},
+s \geq \{ {1}/{\log(1+\alpha)} \} \log (\epsilon_0 / \epsilon), 
 \\]
-since 
+we have
 \\[
-f(\alpha) := \frac{\log(1+\alpha)}{\alpha} \geq \frac{1}{C},
-\\] 
-when $$C = f(1/8)$$. 
-
-
-
-
-#### 2. Sample 1:
-
-The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
-n\in\mathbb N$$ is via through the Euler integral
-
-##### Source code of Sample 1:
-
-	OK1: The *Gamma function* satisfying $$\Gamma(n) = (n-1)!\quad\forall
-	n\in\mathbb N$$ is via through the Euler integral
-
-
-#### 3. Sample 2:
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-##### Source code of Sample 2:
-
-	$$
-		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-	$$
-
-#### 4. Sample 3:
-\\[
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon. 
 \\]
 
-##### Source code of Sample 3:
 
-	\\[
-		\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-	\\]
+Thus, we have to proof that for some $$C$$ and $$\alpha > 1/ 8$$
+\\[
+C (1+1/\alpha) \log (\epsilon_0 / \epsilon) \geq \{ 1 / \log(1+\alpha)) \log (\epsilon_0 / \epsilon)
+\\]
+
+
+Equavelenlly, for some $$C$$ and $$\alpha > 1/ 8$$
+\\[
+C (1 + \alpha) / \alpha  \geq  1 / \log(1+\alpha).
+\\]
+
+Consider, 
+\\[
+f(\alpha) :=  \frac{(1+\alpha) \log(1+\alpha)}{\alpha}.
+\\]
+We want that 
+\\[
+f(\alpha) \geq 1/C.
+\\]
+Since $$f(\alpha)$$ is an ascend function. Then, if we let $$C = f(1/8)$$, we have that 
+\\[
+f(\alpha) \geq 1/C,
+\\]
+for $$\alpha \geq 1/8.$$
 
