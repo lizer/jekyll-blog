@@ -19,7 +19,7 @@ E  \{ F(x^{(s)}) - F(x_*)  \} \leq (1+\alpha)^{-s} \epsilon_0.
 \\]
 Then it imples that  
 \\[
-E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq \epsilon,
+E \{ F(x^{(s)}) - F(x_*) \} \leq \epsilon,
 \\]
 if $$s = C (1+1/\alpha) \log ({\epsilon_0}/{\epsilon}).$$ 
 
@@ -31,7 +31,7 @@ s \geq \{ {1}/{\log(1+\alpha)} \} \log (\epsilon_0 / \epsilon),
 \\]
 we have
 \\[
-E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon. 
+E  \{ F(x^{(s)}) - F(x_*) \} \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon. 
 \\]
 
 
