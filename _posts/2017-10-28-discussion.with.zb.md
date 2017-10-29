@@ -41,16 +41,16 @@ C (1+1/\alpha) \log (\epsilon_0 / \epsilon) \geq  (1 / \log(1+\alpha)) \log (\ep
 \\]
 
 
-Equavelenlly, for some $$C$$ and $$\alpha > 1/ 8$$
+Equivalenlly, for some $$C$$ and $$\alpha > 1/ 8$$
 \\[
 C (1 + \alpha) / \alpha  \geq  1 / \log(1+\alpha).
 \\]
 
-Consider, 
+Consider the following function:
 \\[
 f(\alpha) :=  \frac{(1+\alpha) \log(1+\alpha)}{\alpha}.
 \\]
-We want that 
+We want to obtain that, for some $$C$$ and $$\alpha > 1/ 8$$ 
 \\[
 f(\alpha) \geq 1/C.
 \\]
