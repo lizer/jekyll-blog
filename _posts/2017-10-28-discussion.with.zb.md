@@ -15,11 +15,11 @@ published: true
 ### property
 If, for $$\alpha \geq {1}/{8},$$
 \\[
-\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0. 
+E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0. 
 \\]
 Then it imples that  
 \\[
-\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq \epsilon,
+E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq \epsilon,
 \\]
 if $$s = C (1+1/\alpha) \log ({\epsilon_0}/{\epsilon}).$$ 
 
@@ -31,7 +31,7 @@ s \geq \{ {1}/{\log(1+\alpha)} \} \log (\epsilon_0 / \epsilon),
 \\]
 we have
 \\[
-\mathbb{E} \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon. 
+E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0 \leq \epsilon. 
 \\]
 
 
