@@ -15,7 +15,7 @@ published: true
 ### property
 If, for $$\alpha \geq {1}/{8},$$
 \\[
-E \left\{ F(x^{(s)}) - F(x_*) \right\} \leq (1+\alpha)^{-s} \epsilon_0. 
+E  \{ F(x^{(s)}) - F(x_*)  \} \leq (1+\alpha)^{-s} \epsilon_0. 
 \\]
 Then it imples that  
 \\[
