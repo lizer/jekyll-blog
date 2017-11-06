@@ -13,10 +13,10 @@ Gurbuzbalaban, Mert, Asuman Ozdaglar, and Pablo A. Parrilo. "On the convergence 
 
 DIAG:
 
-Mokhtari, Aryan, Mert Gürbüzbalaban, and Alejandro Ribeiro. "Surpassing Gradient Descent Provably: A Cyclic Incremental Method with Linear Convergence Rate." arXiv preprint arXiv:1611.00347 (2016).［pdf］(https://arxiv.org/pdf/1611.00347.pdf)
+Mokhtari, Aryan, Mert Gürbüzbalaban, and Alejandro Ribeiro. "Surpassing Gradient Descent Provably: A Cyclic Incremental Method with Linear Convergence Rate." arXiv preprint arXiv:1611.00347 (2016).[pdf](https://arxiv.org/pdf/1611.00347.pdf)
 
 IQN:
 
-Mokhtari, Aryan, Mark Eisen, and Alejandro Ribeiro. "IQN: An Incremental Quasi-Newton Method with Local Superlinear Convergence Rate." arXiv preprint arXiv:1702.00709 (2017). ［pdf](https://arxiv.org/pdf/1702.00709.pdf)
+Mokhtari, Aryan, Mark Eisen, and Alejandro Ribeiro. "IQN: An Incremental Quasi-Newton Method with Local Superlinear Convergence Rate." arXiv preprint arXiv:1702.00709 (2017). [pdf](https://arxiv.org/pdf/1702.00709.pdf)
 
 把MC安排到ZC组。                                                                                                                                                                  
